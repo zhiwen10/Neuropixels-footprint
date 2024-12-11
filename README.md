@@ -27,3 +27,17 @@ Footprint in μm.
 (3) extract amplitude samples at different radius from peak amplitude site
 
 (4) average across amplitude samples at different radius, and find radius when mean amplitudes drops to 30 μV. 
+
+## python version
+
+Instructions
+```bash
+# locate to folders with code
+cd root/Neuropixels-footprint/python_version
+# Create new virtual environment
+conda env create --file requirements.yaml
+# Activate the environment
+conda activate footprint
+# open jupyter notebook and navitage to footprint_all.ipynb
+jupyter notebook
+```

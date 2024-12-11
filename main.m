@@ -1,21 +1,24 @@
 %% Add paths 
 githubDir = 'C:\Users\Steinmetz lab\Documents\git';
 addpath(genpath(fullfile(githubDir, 'Neuropixels-footprint')))
-%% specify folder that has *.bin raw data file and probe type
+%% specify probe type
 labels{1} = 'NP20';
 labels{2} = 'NP10';
 labels{3} = 'NPUHD2';
+
 %% save mean waveform from *.bin files and kilosort results (optional)
 % data_preprocessing;
 
-% load meanWavform matrix: ncluster * nchan (384) *tSampleN (82)
+%% load meanWavform matrix: ncluster * nchan (384) *tSampleN (82)
 id = 1;
 label = labels{id};
 data_folder = 'data';
 load(fullfile(data_folder,['meanWaveform_' label '.mat']));
+
 %% load channel map
 chanMap_folder = 'chanMaps';
 [xcoords,ycoords] = loadChanMap(chanMap_folder,label);
+
 %% get footprints
 footprint = nan(size(waveformMean,1),1);
 shank_spacing = 250;                                                       % specify shank spacing (use 250, if single shank)
@@ -23,6 +26,7 @@ for i = 1:size(waveformMean,1)
     thisWF = squeeze(waveformMean(i,:,:));
     footprint(i,1) = getFootprint(thisWF,xcoords,ycoords,shank_spacing);
 end
+
 %% plot waveforms
 yscale = 0.1;                                                              % scale peak voltage, to avoid overlapping waveforms
 siteSz = 6;                                                                % scale waveform length
@@ -31,6 +35,5 @@ indx = [1:5];
 h1 = plotWaveform2(waveformMean(indx,:,:),footprint(indx),...
     xcoords,ycoords,siteN,siteSz,yscale,shank_spacing);                    % plot example waveform
 
-% save_folder = fullfile('C:\Users\Steinmetz lab\Documents\MATLAB\footprint\main2');
-% print(h1,fullfile(save_folder,['footprint_' label '_2.pdf']),...
+% print(h1,['footprint_' label '_2.pdf'],...
 %     '-dpdf', '-bestfit', '-painters');

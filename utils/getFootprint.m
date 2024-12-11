@@ -25,7 +25,6 @@ amps1 = sort(amps);
 amps = amps-mean(amps1(1:10));
 %% if 4 shank probe, only use shank where peak site is at 
 [amps_max,I_max] = max(amps);
-
 maxAmpSite_shank = round(xcoords(I_max)./shank_spacing)+1;
 alSites_shank = round(xcoords./shank_spacing)+1;
 siteOnShank_index = (alSites_shank == maxAmpSite_shank);
@@ -33,21 +32,9 @@ xcoords = xcoords(siteOnShank_index);
 ycoords = ycoords(siteOnShank_index);
 amps = amps(siteOnShank_index);
 thisWF = thisWF(siteOnShank_index,:);
-%% find out row spacing
-% if all sites are single column, with trunk staggering like double length
-% NP2.0, then collapse into single column. Otherwise, fillmissing 2 mess up
-xc1 = unique(xcoords);
-ysort = sort(ycoords(xcoords==xc1(1)));
-ysort_diff = diff(ysort);
-[C,ia,ic] = unique(ysort_diff);
-a_counts = accumarray(ic,1);
-if isrow(C)
-    C = C';
-end
-value_counts = [C, a_counts];
-value_counts_sort = sortrows(value_counts,2,'descend');
-row_spacing = value_counts_sort(1,1);
-%% if too much staggering, then fillmissing2 fails
+%% dealing with NP2.0 site stagger issue 
+row_spacing = getRowSpacing(xcoords,ycoords);
+% if too much staggering, then fillmissing2 fails
 % therefore, we would collapse into a single column for NP20 double length
 % situation
 length_expected = round(numel(xcoords)./numel(unique(xcoords)))*row_spacing;

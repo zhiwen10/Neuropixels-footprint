@@ -1,0 +1,11 @@
+name: footprint
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python == 3.9
+  - matplotlib
+  - notebook
+  - numpy
+  - scipy
+  - tqdm

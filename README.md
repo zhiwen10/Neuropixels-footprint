@@ -26,7 +26,7 @@ Footprint in μm.
 
 (3) extract amplitude samples at different radius from peak amplitude site
 
-(4) average across amplitude samples at different radius, and find radius when mean amplitudes drops to 30 μV. 
+(4) average across amplitude samples at different radius, and find radius where mean amplitudes drops to 30 μV. 
 
 ## python version
 

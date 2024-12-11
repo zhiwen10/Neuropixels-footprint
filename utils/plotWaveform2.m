@@ -78,7 +78,7 @@ for kk = 1:ncluster
     xcoords3_sort = xcoords3(I4);
     ycoords3_sort = ycoords3(I4);
     nsites = size(thisWF3_sort,1);
-    % color1 = flipud(hot(nsites+6));
+    % color1 = flipud(hot(nsites));
     color1 = flipud(cbrewer2('seq','reds',nsites));
     for i = 1:nsites
         hold on;

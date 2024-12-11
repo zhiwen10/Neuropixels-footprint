@@ -36,7 +36,8 @@ thisWF = thisWF(siteOnShank_index,:);
 %% find out row spacing
 % if all sites are single column, with trunk staggering like double length
 % NP2.0, then collapse into single column. Otherwise, fillmissing 2 mess up
-ysort = sort(ycoords);
+xc1 = unique(xcoords);
+ysort = sort(ycoords(xcoords==xc1(1)));
 ysort_diff = diff(ysort);
 [C,ia,ic] = unique(ysort_diff);
 a_counts = accumarray(ic,1);

@@ -22,14 +22,15 @@ labels{3} = 'NPUHD2';
 id = 2;
 label = labels{id};
 load(['meanWaveform_' label '.mat']);
+waveformMean = waveformMean*2.34;                                          % multiply by gain from .bin data
+% subtract baseline for mean waveform
+wfBaseline = mean(waveformMean(:,:,1:10),3);                               % subtract baseline for each chan
+wfBaseline2 = repmat(wfBaseline,[1,1,82]);
+waveformMean = waveformMean-wfBaseline2;
+% writeNPY(waveformMean,['meanWaveform_' label '.npy']);
 %% load channel map
 chanMap_folder = 'chanMaps';
 [xcoords,ycoords] = loadChanMap(chanMap_folder,label);
-%% subtract baseline for mean waveform
-waveformMean = waveformMean*2.34;                                          % multiply by gain from .bin data
-wfBaseline = mean(waveformMean(:,:,1:10),3);                                        % subtract baseline for each chan
-wfBaseline2 = repmat(wfBaseline,[1,1,82]);
-waveformMean = waveformMean-wfBaseline2;
 %% get footprints
 footprint = nan(size(waveformMean,1),1);
 shank_spacing = 250;                                                       % specify shank spacing (use 250, if single shank)

@@ -41,6 +41,14 @@ def get_amps(unit):
 
 def get_amp_map(amps,xcoords,ycoords):
 
+    # only use 500 um around peak site in ycoords, to speed up 2d interpolation
+    I_max2 = np.where(amps==np.max(amps))[0]
+    maxAmpY = ycoords[I_max2]
+    index1 = np.where((ycoords>= maxAmpY-500) & (ycoords <=maxAmpY+500))
+    amps = amps[index1]
+    xcoords = xcoords[index1]
+    ycoords = ycoords[index1]
+
     '''create a high resolution amplitude matrix, using 2d interpolate
     matrix boundry is defined by max and min of site position.
     '''
@@ -130,7 +138,7 @@ def get_footprint_radius(unit,xcoords, ycoords, threshold=30):
         
     amps = get_amps(unit)
 
-    # if 4 shank probe, only use shank where peak site is at 
+    # if 4 shank probe, only use shank where peak site is at, otherwise all sites
     shank_spacing = 250
     I_max = np.argmax(amps)
     maxAmpSite_shank = np.round(xcoords[I_max]/shank_spacing)
@@ -139,6 +147,7 @@ def get_footprint_radius(unit,xcoords, ycoords, threshold=30):
     xcoords = xcoords[siteOnShank_index]
     ycoords = ycoords[siteOnShank_index]
     amps = amps[siteOnShank_index]
+
     # if staggering is too much, then bad for 2d interp, like NP20 double length
     row_spacing = get_row_spacing(xcoords,ycoords)
     length_expected = np.round(len(xcoords) / len(np.unique(xcoords))) * row_spacing

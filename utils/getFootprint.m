@@ -43,7 +43,16 @@ if length_true > length_expected*1.2
     xcoords(:) = min(xcoords);
 end
 %% define a high resolution matrix using min and max of site position in chanMap
-% at 1 um resolution, fill in the 384 sites within this matrix
+
+% only use 500 um around peak site in ycoords, to speed up 2d interpolation
+[amps_max2,I_max2] = max(amps);
+maxAmpY = ycoords(I_max2);
+index1 = (ycoords>= maxAmpY-500 & ycoords<=maxAmpY+500);
+amps = amps(index1);
+xcoords = xcoords(index1);
+ycoords = ycoords(index1);
+
+% at 1 um resolution, fill in all sites within this matrix
 % then intepolate the rest missing entries, using "fillmissing2"
 xmin = min(xcoords); xmax = max(xcoords);
 ymin = min(ycoords); ymax = max(ycoords);

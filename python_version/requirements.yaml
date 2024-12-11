@@ -5,7 +5,8 @@ channels:
 dependencies:
   - python == 3.9
   - matplotlib
-  - notebook
+  - jupyter
   - numpy
   - scipy
+  - h5py
   - tqdm

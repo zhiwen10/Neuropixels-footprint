@@ -5,13 +5,13 @@ addpath(genpath(fullfile(githubDir, 'Neuropixels-footprint')))
 labels{1} = 'NP20';
 labels{2} = 'NP10';
 labels{3} = 'NPUHD2';
+id = 1;
+label = labels{id};
 
 %% save mean waveform from *.bin files and kilosort results (optional)
 % data_preprocessing;
 
 %% load meanWavform matrix: ncluster * nchan (384) *tSampleN (82)
-id = 1;
-label = labels{id};
 data_folder = 'data';
 load(fullfile(data_folder,['meanWaveform_' label '.mat']));
 

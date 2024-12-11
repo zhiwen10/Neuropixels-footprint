@@ -1,5 +1,5 @@
 function footprint = getFootprint(thisWF,xcoords,ycoords, shank_spacing)
-%% get amp map by suming trough and peak after trough 
+%% get amp map by suming (1) trough and (2) peak after trough 
 troughs_min = min(thisWF(:));
 peaks_max = max(thisWF(:));
 % if abs(peak)>abs(trough), i.e., inverted waveform, then flip the waveform

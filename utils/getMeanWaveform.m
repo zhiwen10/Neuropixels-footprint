@@ -5,7 +5,6 @@ function waveformMean = getMeanWaveform(ksSubFolder)
 % ksfolders{2} = '\\sahale.biostr.washington.edu\data\Subjects\LK_0003\2021-07-06\1\p0_g0';
 % ksfolders{3} = '\\sahale.biostr.washington.edu\data\Subjects\JRS_0033\2024-02-27\4\p3_g0\p3_g0_imec1';
 nspikeThresh = 100;
-ksSubFolder  = ksfolder;
 [wf1,spikeTimesAll,spikeCluAll] = filterCluster(ksSubFolder,nspikeThresh);
 unitIDs = wf1.unitIDs;
 waveformMean = wf1.waveFormsMean;

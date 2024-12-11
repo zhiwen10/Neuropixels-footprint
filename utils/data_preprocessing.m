@@ -8,16 +8,16 @@ labels{1} = 'NP20';
 labels{2} = 'NP10';
 labels{3} = 'NPUHD2';
 %%
-for i = 1:3
+for i = 1
     ksSubFolder = ksfolders{i};
     label = labels{i};
-    waveformMean = data_preprocessing(ksSubFolder,label);
+    waveformMean = getMeanWaveform(ksSubFolder);
     %%
-    waveformMean = waveformMean*2.34;                                          % multiply by gain from .bin data
+    waveformMean = waveformMean*2.34;                                      % multiply by gain from .bin data
     % subtract baseline for mean waveform
-    wfBaseline = mean(waveformMean(:,:,1:10),3);                               % subtract baseline for each chan
+    wfBaseline = mean(waveformMean(:,:,1:10),3);                           % subtract baseline for each chan
     wfBaseline2 = repmat(wfBaseline,[1,1,82]);
     waveformMean = waveformMean-wfBaseline2;
-    save(['meanWaveform_' label '_2.mat'],'waveformMean');
+    save(['meanWaveform_' label '.mat'],'waveformMean');
     writeNPY(waveformMean,['meanWaveform_' label '.npy']);
 end

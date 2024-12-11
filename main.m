@@ -12,7 +12,7 @@ labels{3} = 'NPUHD2';
 id = 1;
 label = labels{id};
 data_folder = 'data';
-load(fullfile(data_folder,['meanWaveform_' label '_2.mat']));
+load(fullfile(data_folder,['meanWaveform_' label '.mat']));
 %% load channel map
 chanMap_folder = 'chanMaps';
 [xcoords,ycoords] = loadChanMap(chanMap_folder,label);

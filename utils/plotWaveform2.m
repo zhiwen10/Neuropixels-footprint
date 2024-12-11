@@ -7,7 +7,6 @@ wfs = wfs(:,:,tRange_new);
 %%
 xc =sort(unique(xcoords)); yc = sort(unique(ycoords));
 tRangeN = size(wfs,3);           
-
 nchan =  size(wfs,2);
 %%
 h1 = figure('Renderer', 'painters', 'Position', [50 50 900 500]);

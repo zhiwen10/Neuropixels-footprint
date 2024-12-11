@@ -1,5 +1,6 @@
 %% Add paths 
 githubDir = 'C:\Users\Steinmetz lab\Documents\git';
+addpath(genpath(fullfile(githubDir, 'Neuropixels-footprint')))
 addpath(genpath(fullfile(githubDir, 'npy-matlab')))
 addpath(genpath(fullfile(githubDir, 'spikes')))
 addpath(genpath('C:\Users\Steinmetz lab\Documents\MATLAB\cbrewer2'))
@@ -22,7 +23,7 @@ id = 2;
 label = labels{id};
 load(['meanWaveform_' label '.mat']);
 %% load channel map
-chanMap_folder = 'C:\Users\Steinmetz lab\Documents\git\Kilosort2_J\configFiles';
+chanMap_folder = 'chanMaps';
 [xcoords,ycoords] = loadChanMap(chanMap_folder,label);
 %% subtract baseline for mean waveform
 waveformMean = waveformMean*2.34;                                          % multiply by gain from .bin data
@@ -37,15 +38,13 @@ for i = 1:size(waveformMean,1)
     footprint(i,1) = getFootprint(thisWF,xcoords,ycoords,shank_spacing);
 end
 %% plot waveforms
-% yscale = 0.2; 
-% siteSz = 12;  
-% siteN = 36;
 yscale = 0.1;                                                              % scale peak voltage, to avoid overlapping waveforms
 siteSz = 6;                                                                % scale waveform length
 siteN = 48;                                                                % total sites to plot (max 96 for 4 shank NP20)
 indx = [1:5];
-h1 = plotWaveform(waveformMean(indx,:,:),footprint(indx),xcoords,ycoords,...
-    siteN,siteSz,yscale,shank_spacing);                                   % plot example waveform
+h1 = plotWaveform2(waveformMean(indx,:,:),footprint(indx),...
+    xcoords,ycoords,siteN,siteSz,yscale,shank_spacing);                    % plot example waveform
+
 % save_folder = fullfile('C:\Users\Steinmetz lab\Documents\MATLAB\footprint\main2');
 % print(h1,fullfile(save_folder,['footprint_' label '_2.pdf']),...
 %     '-dpdf', '-bestfit', '-painters');

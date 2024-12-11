@@ -1,4 +1,4 @@
-function h1 = plotWaveform(wfs,radius,xcoords,ycoords,siteN,siteSz,yscale,shank_spacing)
+function h1 = plotWaveform2(wfs,radius,xcoords,ycoords,siteN,siteSz,yscale,shank_spacing)
 %% load data
 % wfs: cluster*nChan*tSampleN
 tRange_old = [-40 40];
@@ -10,7 +10,7 @@ tRangeN = size(wfs,3);
 
 nchan =  size(wfs,2);
 %%
-h1 = figure('Renderer', 'painters', 'Position', [50 50 900 900]);
+h1 = figure('Renderer', 'painters', 'Position', [50 50 900 500]);
 ncluster = size(wfs,1);
 for kk = 1:ncluster
     thisWF = squeeze(wfs(kk,:,:));

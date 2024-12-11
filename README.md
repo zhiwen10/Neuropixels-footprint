@@ -22,7 +22,7 @@ Footprint in μm.
 
 (1) calculate waveform amplitude at each site
 
-(2) 2d interpolate waveform amplitude into high resolution matrix (at 1 μV), using site positions in chanMap
+(2) transform waveform amplitude to high resolution matrix (at 1 μV) by 2d interpolate, using site positions in chanMap
 
 (3) extract amplitude samples at different radius from peak amplitude site
 

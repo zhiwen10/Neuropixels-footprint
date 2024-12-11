@@ -10,13 +10,13 @@ Units with footpirnt <20 μm are mostly to be axons. Details in [Ye & Shelton et
 
 ### Input: 
 
-mean waveform: ncluster x nchan(384) x tSampleN(82)
+Mean waveforms: ncluster x nchan(384) x tSampleN(82)
 
-chanMap to indicate site positions in : xcoords (384x1), ycoords (384x1) 
+ChanMap to indicate site positions in : xcoords (384x1), ycoords (384x1) 
 
 ### Output:
 
-footprint in μm.
+Footprint in μm.
 
 ### Workflow:
 

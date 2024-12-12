@@ -11,7 +11,10 @@ labels{3} = 'NPUHD2';
 for i = 1
     ksSubFolder = ksfolders{i};
     label = labels{i};
-    waveformMean = getMeanWaveform(ksSubFolder);
+    nspikeThresh = 100;
+    [wf1,spikeTimesAll,spikeCluAll] = filterCluster(ksSubFolder,nspikeThresh);
+    unitIDs = wf1.unitIDs;
+    waveformMean = wf1.waveFormsMean;
     %%
     waveformMean = waveformMean*2.34;                                      % multiply by gain from .bin data
     % subtract baseline for mean waveform
@@ -19,5 +22,5 @@ for i = 1
     wfBaseline2 = repmat(wfBaseline,[1,1,82]);
     waveformMean = waveformMean-wfBaseline2;
     save(['meanWaveform_' label '.mat'],'waveformMean');
-    writeNPY(waveformMean,['meanWaveform_' label '.npy']);
+    % writeNPY(waveformMean,['meanWaveform_' label '.npy']);
 end

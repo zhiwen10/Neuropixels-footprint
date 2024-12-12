@@ -29,7 +29,7 @@ Footprint in μm.
 (4) average across amplitude samples at different radius, and find radius where mean amplitudes drops to 30 μV. 
 
 ### Example data:
-We included example mean waveforms in the "data" folder (NP1.0, NP2.0 and NP-UHD data in *.mat and *.npy format).
+We include example mean waveforms in the "data" folder (NP1.0, NP2.0 and NP-UHD data in *.mat and *.npy format).
 
 The corresponding channel maps are in the "chanMaps" folder.   
 

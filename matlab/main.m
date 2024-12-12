@@ -5,9 +5,9 @@ addpath(genpath(fullfile(githubDir, 'Neuropixels-footprint')))
 labels{1} = 'NP20';
 labels{2} = 'NP10';
 labels{3} = 'NPUHD2';
-id = 1;
+labels{4} = 'NPUHD';
+id = 2;
 label = labels{id};
-
 %% save mean waveform from *.bin files and kilosort results (optional)
 % data_preprocessing;
 
@@ -26,6 +26,8 @@ for i = 1:size(waveformMean,1)
     thisWF = squeeze(waveformMean(i,:,:));
     footprint(i,1) = getFootprint(thisWF,xcoords,ycoords,shank_spacing);
 end
+% ft = table(footprint);
+% writetable(ft,[label '_footprint_matlab.csv']);
 
 %% plot waveforms
 yscale = 0.1;                                                              % scale peak voltage, to avoid overlapping waveforms

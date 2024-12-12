@@ -6,7 +6,9 @@ function [xcoords,ycoords] = loadChanMap(chanMap_folder,label)
 % col: max(xc); row: max(yc)
 switch label
     case 'NPUHD2'
-        chanMap = 'NPUHD2_bank0_ref0.mat';        
+        chanMap = 'NPUHD2_bank0_ref0.mat';    
+    case 'NPUHD'
+        chanMap = 'neuropixelUltra_kilosortChanMap.mat';  
     case 'NP10'
         chanMap = 'neuropixPhase3B1_kilosortChanMap.mat';
     case 'NP20'

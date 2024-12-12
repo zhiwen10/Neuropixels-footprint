@@ -97,5 +97,5 @@ end
 vq_mean = mean(vq,1,"omitnan");
 footprint = find(vq_mean<=30,1);
 if isempty(footprint)
-    footprint = nan;
+    footprint = 100;
 end

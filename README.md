@@ -1,10 +1,10 @@
 # Neuropixels-footprint
-get footprint metric from all Neuropixels probe
+Get footprint metric from all Neuropixels probe
 
 ## Description
 This repository calculates footprint metric from Neuropixels mean waveforms, a metric to evaluate waveform spead from peak site.
 Footprint is defined as the radius from peak site, at which the mean waveform peak voltage drops below 30 μV.
-Units with footpirnt <20 μm are mostly likely axons. Details in [Ye & Shelton et al, 2023](https://www.biorxiv.org/content/10.1101/2023.08.23.554527v3).
+Units with footpirnt <20 μm are most likely axons. For details, check out [Ye & Shelton et al, 2023](https://www.biorxiv.org/content/10.1101/2023.08.23.554527v3).
 
 ![examples](https://github.com/zhiwen10/Neuropixels-footprint/blob/main/examples.png)
 
@@ -32,6 +32,8 @@ Footprint in μm.
 We include example mean waveforms in the "data" folder (NP1.0, NP2.0 and NP-UHD data in *.mat and *.npy format).
 
 The corresponding channel maps are in the "chanMaps" folder.   
+
+To extract mean waveforms from your own Neuropixels data *.bin files, we provide a Matlab script "data_preprocessing.m". 
 
 ## python version
 

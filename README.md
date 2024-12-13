@@ -6,7 +6,7 @@ This repository calculates footprint metric from Neuropixels mean waveforms, a m
 Footprint is defined as the radius from peak site, at which the mean waveform peak voltage drops below 30 μV.
 Units with footpirnt <20 μm are most likely axons. For details, check out [Ye & Shelton et al, 2023](https://www.biorxiv.org/content/10.1101/2023.08.23.554527v3).
 
-![examples](https://github.com/zhiwen10/Neuropixels-footprint/blob/main/examples.png)
+![examples](https://github.com/zhiwen10/Neuropixels-footprint/blob/main/examples2.png)
 
 ### Input: 
 

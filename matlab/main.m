@@ -6,7 +6,7 @@ labels{1} = 'NP20';
 labels{2} = 'NP10';
 labels{3} = 'NPUHD2';
 labels{4} = 'NPUHD';
-id = 2;
+id = 3;
 label = labels{id};
 %% save mean waveform from *.bin files and kilosort results (optional)
 % data_preprocessing;
@@ -33,9 +33,9 @@ end
 yscale = 0.1;                                                              % scale peak voltage, to avoid overlapping waveforms
 siteSz = 6;                                                                % scale waveform length
 siteN = 48;                                                                % total sites to plot (max 96 for 4 shank NP20)
-indx = [1:5];
+indx = [66:70];
 h1 = plotWaveform2(waveformMean(indx,:,:),footprint(indx),...
     xcoords,ycoords,siteN,siteSz,yscale,shank_spacing);                    % plot example waveform
 
-% print(h1,['footprint_' label '_2.pdf'],...
+% print(h1,['footprint_' label '_1.pdf'],...
 %     '-dpdf', '-bestfit', '-painters');
